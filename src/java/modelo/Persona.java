@@ -4,6 +4,7 @@ import com.sun.istack.logging.Logger;
 
 import java.sql.*;
 import java.util.logging.Level;
+import java.util.ArrayList;
 
 public class Persona {
     //Atributos de la clase 
@@ -27,6 +28,12 @@ public class Persona {
             java.util.logging.Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public Persona(String dui, String apell, String nom){
+        this.dui = dui;
+        this.apellidos = apell;
+        this.nombres = nom;
+    }
+   
     
     public boolean insertarDatos(){
         try{
@@ -41,6 +48,21 @@ public class Persona {
             java.util.logging.Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    public ArrayList<Persona> consultarRegistros(){
+        ArrayList<Persona> person = new ArrayList(); // Crear el arrat de almacenamiento de tipo persona
+        try{
+            String miQuery = "Select * from tb_persona";
+            state = cnn.createStatement();
+            result = state.executeQuery(miQuery);
+            while(result.next()){
+                person.add(new Persona(result.getString("dui_persona"), result.getString("apellidos_persona"), result.getString("nombres_persona")));
+            }
+        }catch(SQLException ex){
+            java.util.logging.Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return person;
     }
     
     //Generar los metodos set y get para los atributos
