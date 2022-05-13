@@ -1,6 +1,7 @@
 package modelo;
 
 import com.sun.istack.logging.Logger;
+import java.io.PrintWriter;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -23,8 +24,10 @@ public class Persona {
             Class.forName("com.mysql.jdbc.Driver");//Driver de la base de datos
             cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_recurso_humano", "root", "");
         } catch (ClassNotFoundException ex) {
+            System.out.println("Conexion fallida!");
             java.util.logging.Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            System.out.println("Conexion fallida!");
             java.util.logging.Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
