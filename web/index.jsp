@@ -15,5 +15,8 @@
             Nombres: <input type="text" name="txtNombres" value="" /><br>
             <input type="submit" value="RegistrarNuevaPersona" />
         </form>
+        <form action="mostrar.do" method="post">        
+                <input type="submit" value="Consultar">    
+            </form> 
     </body>
 </html>
