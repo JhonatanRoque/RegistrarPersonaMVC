@@ -1,7 +1,6 @@
 package modelo;
 
-import com.sun.istack.logging.Logger;
-import java.io.PrintWriter;
+
 
 import java.sql.*;
 import java.util.logging.Level;
